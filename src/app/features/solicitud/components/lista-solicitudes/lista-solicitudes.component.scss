@@ -1,0 +1,9 @@
+.icon-button {
+    cursor: pointer;
+}
+
+.disable-icon-button {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+}
