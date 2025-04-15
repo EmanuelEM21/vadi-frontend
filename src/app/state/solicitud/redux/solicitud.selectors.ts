@@ -7,3 +7,7 @@ export const selectAllSolicitudes = createSelector(
   selectSolicitudState,
   (state) => state.solicitudes
 );
+export const selectAllEstados = createSelector(
+  selectSolicitudState,
+  (state) => state.estados
+);

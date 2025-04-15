@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
-import { createSolicitud, createSolicitudSuccess, deleteSolicitud, deleteSolicitudSuccess, loadSolicitudes, loadSolicitudesSuccess, updateSolicitud, updateSolicitudSuccess } from '../actions/solicitud.actions';
+import { createSolicitud, createSolicitudSuccess, deleteSolicitud, deleteSolicitudSuccess, loadEstados, loadEstadosSuccess, loadSolicitudes, loadSolicitudesSuccess, updateSolicitud, updateSolicitudSuccess } from '../actions/solicitud.actions';
 import { SolicitudService } from 'src/app/core/services/solicitud.service';
+import { EstadoService } from 'src/app/core/services/estado.service';
 
 @Injectable()
 export class SolicitudEffects {
   constructor(
     private solicitudService: SolicitudService,
+    private estadoService: EstadoService,
     private actions$: Actions,
   ) { }
 
@@ -28,14 +30,21 @@ export class SolicitudEffects {
   updateSolicitud$ = createEffect(() => this.actions$.pipe(
     ofType(updateSolicitud),
     switchMap((data) => this.solicitudService.updateSolicitud(data.solicitud).pipe(
-      map((estadoOperacion) => updateSolicitudSuccess(estadoOperacion))
+      map((estadoOperacion) => updateSolicitudSuccess({ estadoOperacion }))
     ))
   ));
 
   deleteSolicitud$ = createEffect(() => this.actions$.pipe(
     ofType(deleteSolicitud),
     switchMap((data) => this.solicitudService.deleteSolicitud(data.id).pipe(
-      map((estadoOperacion) => deleteSolicitudSuccess(estadoOperacion))
+      map((estadoOperacion) => deleteSolicitudSuccess({ estadoOperacion }))
+    ))
+  ));
+
+  loadEstados$ = createEffect(() => this.actions$.pipe(
+    ofType(loadEstados),
+    switchMap(() => this.estadoService.getEstados().pipe(
+      map((estados) => loadEstadosSuccess({ estados }))
     ))
   ));
 }
