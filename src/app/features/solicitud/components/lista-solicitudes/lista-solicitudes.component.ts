@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { Filtro } from 'src/app/core/models/filtro';
 import { Solicitud } from 'src/app/core/models/solicitud.model';
 import { loadSolicitudes } from 'src/app/state/solicitud/redux/actions/solicitud.actions';
 import { selectAllSolicitudes } from 'src/app/state/solicitud/redux/solicitud.selectors';
@@ -12,13 +13,14 @@ import { selectAllSolicitudes } from 'src/app/state/solicitud/redux/solicitud.se
   styleUrls: ['./lista-solicitudes.component.scss']
 })
 export class ListaSolicitudesComponent {
-  solicitudes$: Observable<Solicitud[]>;
+  private filtro: Filtro = { columna: 'Id', valor: '', numeroPagina: 0, numeroItems: 5 };
+  protected solicitudes$: Observable<Solicitud[]>;
 
   constructor(private store: Store) {
     this.solicitudes$ = this.store.select(selectAllSolicitudes);
   }
 
   ngOnInit() {
-    this.store.dispatch(loadSolicitudes());
+    this.store.dispatch(loadSolicitudes({ filtro: this.filtro }));
   }
 }

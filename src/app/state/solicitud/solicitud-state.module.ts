@@ -5,7 +5,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { solicitudReducer } from './redux/solicitud.reducer';
 import { SolicitudEffects } from './redux/effects/solicitud.effects';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -13,4 +12,4 @@ import { SolicitudEffects } from './redux/effects/solicitud.effects';
     EffectsModule.forFeature([SolicitudEffects])
   ],
 })
-export class SolicitudModule {}
+export class SolicitudModule { }
