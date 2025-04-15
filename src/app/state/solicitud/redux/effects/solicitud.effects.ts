@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 import { loadSolicitudes, loadSolicitudesSuccess } from '../actions/solicitud.actions';
-import { SolicitudService } from 'src/app/api/solicitud.service';
+import { SolicitudService } from 'src/app/core/services/solicitud.service';
 
 @Injectable()
 export class SolicitudEffects {

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { Solicitud } from "./solicitud.model";
+import { Solicitud } from "../models/solicitud.model";
 
 @Injectable({
     providedIn: "root",

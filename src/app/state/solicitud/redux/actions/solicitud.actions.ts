@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Solicitud } from '../../../../api/solicitud.model';
+import { Solicitud } from '../../../../core/models/solicitud.model';
 
 export const loadSolicitudes = createAction('[Solicitud] Load Solicitudes');
 

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as SolicitudActions from './actions/solicitud.actions';
-import { Solicitud } from '../../../api/solicitud.model';
+import { Solicitud } from '../../../core/models/solicitud.model';
 
 export interface SolicitudState {
   solicitudes: Solicitud[];
