@@ -4,6 +4,7 @@ import { ListaSolicitudesComponent } from './components/lista-solicitudes/lista-
 import { GestionarSolicitudesComponent } from './components/gestionar-solicitudes/gestionar-solicitudes.component';
 import { RouterModule } from '@angular/router';
 import { SolicitudRoutes } from './solicitud-rounting.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { SolicitudRoutes } from './solicitud-rounting.module';
   ],
   imports: [
     RouterModule.forChild(SolicitudRoutes),
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class SolicitudModule { }
