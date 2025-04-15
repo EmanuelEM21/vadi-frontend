@@ -15,13 +15,9 @@ export class EstadoService {
   public getEstados(): Observable<any> {
     return this.httpClient.get(`${this.apiUrl}/Estado/obtener-estados`).pipe(
       take(1),
-      tap((data: any) => {
-        this.snackBar.openSnackBar(data.mensaje, 3000)
-        return of(true);
-      }),
       catchError(error => {
         this.snackBar.openSnackBar(error.mensaje, 3000)
-        return of(false);
+        return of([]);
       })
     );
   }
