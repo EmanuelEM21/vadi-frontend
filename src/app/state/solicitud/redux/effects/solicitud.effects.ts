@@ -9,7 +9,7 @@ export class SolicitudEffects {
   loadSolicitudes$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadSolicitudes),
-      switchMap(() => this.solicitudService$.loadSolicitudes().pipe(
+      switchMap(() => this.solicitudService$.getSolicitudes().pipe(
         map((solicitudes) => loadSolicitudesSuccess({ solicitudes }))
       ))
     )
