@@ -15,7 +15,6 @@ export class ListaSolicitudesComponent {
   solicitudes$: Observable<Solicitud[]>;
 
   constructor(private store: Store) {
-    console.log('INIT')
     this.solicitudes$ = this.store.select(selectAllSolicitudes);
   }
 
