@@ -13,7 +13,11 @@ export const SolicitudRoutes: Routes = [
         component: ListaSolicitudesComponent
     },
     {
-        path: 'gestionar-solicitud',
+        path: 'crear-solicitud',
+        component: GestionarSolicitudesComponent
+    },
+    {
+        path: 'actualizar-solicitud/:id',
         component: GestionarSolicitudesComponent
     }
 ];

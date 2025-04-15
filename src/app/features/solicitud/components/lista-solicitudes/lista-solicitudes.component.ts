@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Filtro } from 'src/app/core/models/filtro';
@@ -21,7 +22,10 @@ export class ListaSolicitudesComponent {
     valor: new FormControl('')
   });
 
-  constructor(private store: Store) {
+  constructor(
+    private store: Store,
+    private router: Router
+  ) {
     this.solicitudes$ = this.store.select(selectAllSolicitudes);
   }
 
@@ -31,6 +35,10 @@ export class ListaSolicitudesComponent {
 
   protected eliminarSolicitud(id: number): void {
     this.store.dispatch(deleteSolicitud({ id }));
+  }
+
+  protected updateSolicitud(solicitud: Solicitud): void {
+    this.router.navigate([`solicitudes/actualizar-solicitud/${solicitud.id}`, solicitud])
   }
 
   protected aplicarFiltros(): void {
