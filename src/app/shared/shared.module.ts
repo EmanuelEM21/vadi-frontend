@@ -6,6 +6,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -16,7 +17,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatDatepickerModule,
     MatSelectModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ],
   exports: [
     CommonModule,
@@ -25,7 +27,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatDatepickerModule,
     MatSelectModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ]
 })
 export class SharedModule { }
