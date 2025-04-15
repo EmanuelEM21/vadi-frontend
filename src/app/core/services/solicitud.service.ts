@@ -29,7 +29,7 @@ export class SolicitudService {
             );
     }
 
-    public getSolicitudes(filtro?: Filtro): Observable<any> {
+    public getSolicitudes(filtro: Filtro | null): Observable<any> {
         if (!filtro) filtro = { columna: 'Id', valor: '', numeroPagina: 0, numeroItems: 5 };
         return this.httpClient.post(`${this.apiUrl}/Solicitud/obtener-solicitudes`, filtro).pipe(
             take(1),

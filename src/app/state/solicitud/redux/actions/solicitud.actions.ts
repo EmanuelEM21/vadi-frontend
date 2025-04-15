@@ -10,7 +10,7 @@ export const createSolicitud = createAction(
 );
 export const loadSolicitudes = createAction(
   '[Solicitud] Load Solicitudes',
-  props<{ filtro: Filtro }>()
+  props<{ filtro: Filtro | null }>()
 );
 export const updateSolicitud = createAction(
   '[Solicitud] Update Solicitud',

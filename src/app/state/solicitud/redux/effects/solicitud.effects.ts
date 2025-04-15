@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs/operators';
+import { map, mergeMap, switchMap } from 'rxjs/operators';
 import { createSolicitud, createSolicitudSuccess, deleteSolicitud, deleteSolicitudSuccess, loadEstados, loadEstadosSuccess, loadSolicitudes, loadSolicitudesSuccess, updateSolicitud, updateSolicitudSuccess } from '../actions/solicitud.actions';
 import { SolicitudService } from 'src/app/core/services/solicitud.service';
 import { EstadoService } from 'src/app/core/services/estado.service';
@@ -37,7 +37,10 @@ export class SolicitudEffects {
   deleteSolicitud$ = createEffect(() => this.actions$.pipe(
     ofType(deleteSolicitud),
     switchMap((data) => this.solicitudService.deleteSolicitud(data.id).pipe(
-      map((estadoOperacion) => deleteSolicitudSuccess({ estadoOperacion }))
+      mergeMap((estadoOperacion) => [
+        loadSolicitudes({ filtro: null }),
+        deleteSolicitudSuccess({ estadoOperacion })
+      ])
     ))
   ));
 
