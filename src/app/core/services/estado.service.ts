@@ -16,7 +16,8 @@ export class EstadoService {
     return this.httpClient.get(`${this.apiUrl}/Estado/obtener-estados`).pipe(
       take(1),
       catchError(error => {
-        this.snackBar.openSnackBar(error.mensaje, 3000)
+        const mensajeError = error?.error?.mensaje ?? 'Hubo un error desconocido durante el proceso';
+        this.snackBar.openSnackBar(mensajeError, 3000)
         return of([]);
       })
     );
