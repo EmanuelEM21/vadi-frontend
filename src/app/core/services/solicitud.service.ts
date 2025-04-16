@@ -23,7 +23,8 @@ export class SolicitudService {
                     return of(true);
                 }),
                 catchError(error => {
-                    this.snackBar.openSnackBar(error.mensaje, 3000)
+                    const mensajeError = error?.error?.mensaje ?? 'Hubo un error desconocido durante el proceso'
+                    this.snackBar.openSnackBar(mensajeError, 3000)
                     return of(false);
                 })
             );
@@ -34,7 +35,8 @@ export class SolicitudService {
         return this.httpClient.post(`${this.apiUrl}/Solicitud/obtener-solicitudes`, filtro).pipe(
             take(1),
             catchError(error => {
-                this.snackBar.openSnackBar(error.mensaje, 3000)
+                const mensajeError = error?.error?.mensaje ?? 'Hubo un error desconocido durante el proceso'
+                this.snackBar.openSnackBar(mensajeError, 3000)
                 return of([]);
             })
         );
@@ -49,7 +51,8 @@ export class SolicitudService {
                     return of(true);
                 }),
                 catchError(error => {
-                    this.snackBar.openSnackBar(error.mensaje, 3000)
+                    const mensajeError = error?.error?.mensaje ?? 'Hubo un error desconocido durante el proceso'
+                    this.snackBar.openSnackBar(mensajeError, 3000)
                     return of(false);
                 })
             );
@@ -64,7 +67,8 @@ export class SolicitudService {
                     return of(true);
                 }),
                 catchError(error => {
-                    this.snackBar.openSnackBar(error.mensaje, 3000)
+                    const mensajeError = error?.error?.mensaje ?? 'Hubo un error desconocido durante el proceso'
+                    this.snackBar.openSnackBar(mensajeError, 3000)
                     return of(false);
                 })
             );
