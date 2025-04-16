@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -14,7 +14,7 @@ import { selectAllEstados, selectEstadoOperacion } from 'src/app/state/solicitud
   templateUrl: './gestionar-solicitudes.component.html',
   styleUrls: ['./gestionar-solicitudes.component.scss']
 })
-export class GestionarSolicitudesComponent implements OnInit {
+export class GestionarSolicitudesComponent implements OnInit, OnDestroy {
   protected estados$: Observable<Estado[]>;
   protected solicitudID: number = 0;
   protected solicitudFormGroup: FormGroup = new FormGroup({
@@ -42,6 +42,10 @@ export class GestionarSolicitudesComponent implements OnInit {
       filter(data => data.length > 0),
       take(1)
     ).subscribe(() => this.loadSolicitud());
+  }
+
+  ngOnDestroy(): void {
+    this.suscription?.unsubscribe;
   }
 
   private initSuscription() {

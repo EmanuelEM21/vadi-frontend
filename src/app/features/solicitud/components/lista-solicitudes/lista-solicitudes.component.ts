@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -14,7 +14,7 @@ import { selectAllSolicitudes } from 'src/app/state/solicitud/redux/solicitud.se
   templateUrl: './lista-solicitudes.component.html',
   styleUrls: ['./lista-solicitudes.component.scss']
 })
-export class ListaSolicitudesComponent {
+export class ListaSolicitudesComponent implements OnInit {
   protected filtro: Filtro = { columna: 'Id', valor: '', numeroPagina: 0, numeroItems: 5 };
   protected solicitudes$: Observable<Solicitud[]>;
   protected filtroFormGroup: FormGroup = new FormGroup({
