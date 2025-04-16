@@ -11,3 +11,7 @@ export const selectAllEstados = createSelector(
   selectSolicitudState,
   (state) => state.estados
 );
+export const selectEstadoOperacion = createSelector(
+  selectSolicitudState,
+  (state) => state.estadoOperacion
+)
