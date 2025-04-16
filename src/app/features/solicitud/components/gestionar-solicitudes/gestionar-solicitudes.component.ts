@@ -18,7 +18,7 @@ export class GestionarSolicitudesComponent implements OnInit, OnDestroy {
   protected estados$: Observable<Estado[]>;
   protected solicitudID: number = 0;
   protected solicitudFormGroup: FormGroup = new FormGroup({
-    id: new FormControl(0, Validators.required),
+    id: new FormControl('', Validators.required),
     fechaSolicitud: new FormControl(null),
     solicitante: new FormControl(''),
     estado: new FormControl(null)
