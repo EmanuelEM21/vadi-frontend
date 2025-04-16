@@ -22,3 +22,5 @@ ng serve
 ## Observaciones
 
 - El API está configurado para que acepte origenes de cualquier puerto, por lo que debería generar problemas de CORS durante el desarrollo local.
+- En caso de que el API tenga una URL diferente a la definida en el environment, es necesario cambiarla para la correcta comunicación con la misma.
+- Para actualizar una solicitud, es necesario hacer doble click en la fila correspondiente.
