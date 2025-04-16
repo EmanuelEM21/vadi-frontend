@@ -3,4 +3,5 @@ export interface Solicitud {
     fechaSolicitud?: string;
     solicitante?: string;
     idEstado?: number;
+    estado?: string;
 }

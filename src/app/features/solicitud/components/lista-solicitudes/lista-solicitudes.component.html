@@ -10,7 +10,7 @@
                     <mat-option value="id">ID</mat-option>
                     <mat-option value="fechaSolicitud">Fecha solicitud</mat-option>
                     <mat-option value="solicitante">Solicitante</mat-option>
-                    <mat-option value="estadoValue">Estado</mat-option>
+                    <mat-option value="estado">Estado</mat-option>
                 </mat-select>
             </mat-form-field>
 
@@ -43,7 +43,7 @@
             </div>
         </form>
         <div>
-            <button mat-flat-button color="primary" routerLink="/solicitudes/gestionar-solicitud">
+            <button mat-flat-button color="primary" routerLink="/solicitudes/crear-solicitud">
                 Crear solicitud
             </button>
         </div>
@@ -64,7 +64,7 @@
                     <td class="w-10">{{solicitud.id}}</td>
                     <td class="w-20">{{solicitud.fechaSolicitud}}</td>
                     <td class="w-30">{{solicitud.solicitante}}</td>
-                    <td class="w-30">{{solicitud.idEstado}}</td>
+                    <td class="w-30">{{solicitud.estado}}</td>
                     <td class="w-10">
                         <button mat-flat-button color="warn" (click)="eliminarSolicitud(solicitud.id)">Eliminar</button>
                     </td>

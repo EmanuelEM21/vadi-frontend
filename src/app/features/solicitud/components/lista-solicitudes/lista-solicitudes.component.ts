@@ -38,7 +38,9 @@ export class ListaSolicitudesComponent {
   }
 
   protected updateSolicitud(solicitud: Solicitud): void {
-    this.router.navigate([`solicitudes/actualizar-solicitud/${solicitud.id}`, solicitud])
+    this.router.navigate([`solicitudes/actualizar-solicitud/${solicitud.id}`], {
+      state: { solicitud }
+    })
   }
 
   protected aplicarFiltros(): void {
