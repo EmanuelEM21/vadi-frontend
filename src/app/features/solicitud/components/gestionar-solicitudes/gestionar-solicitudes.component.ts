@@ -59,6 +59,10 @@ export class GestionarSolicitudesComponent implements OnInit, OnDestroy {
 
   private loadSolicitud(): void {
     this.solicitudID = Number(this.route.snapshot.paramMap.get('id') ?? 0);
+
+    if (this.solicitudID !== 0) this.solicitudFormGroup.controls['id'].disable();
+    this.solicitudFormGroup.updateValueAndValidity();
+
     const solicitud: Solicitud | null = history.state.solicitud ?? null;
     if (!solicitud) return;
 

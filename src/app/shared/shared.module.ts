@@ -11,9 +11,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatNativeDateModule } from '@angular/material/core';
+import { OnlyNumbersDirective } from '../core/directives/only-numbers.directive';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    OnlyNumbersDirective
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -40,7 +43,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    OnlyNumbersDirective
   ]
 })
 export class SharedModule { }
