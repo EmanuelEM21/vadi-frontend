@@ -1,1 +1,48 @@
-<p>gestionar-solicitudes works!</p>
+<div>
+    <div class="center-content" *ngIf="solicitudID === 0; else updateCase">
+        <h3>Crear solicitud</h3>
+    </div>
+    <ng-template class="center-content" #updateCase>
+        <div class="center-content">
+            <h3>Actualizar solicitud</h3>
+        </div>
+    </ng-template>
+
+    <mat-card>
+        <mat-card-header class="center-content">
+            <h4>Datos de la solicitud</h4>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="solicitudFormGroup">
+                <div class="d-flex">
+                    <mat-form-field appearance="outline" class="w-10">
+                        <mat-label>ID</mat-label>
+                        <input matInput formControlName="id">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-30">
+                        <mat-label>Fecha de solicitud</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fechaSolicitud">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-30">
+                        <mat-label>Solicitante</mat-label>
+                        <input matInput formControlName="solicitante">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-30">
+                        <mat-label>Estado</mat-label>
+                        <mat-select formControlName="estado">
+                            <mat-option *ngFor="let estado of estados$ | async"
+                                [value]="estado.idEstado">{{estado.estadoValue}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </form>
+            <div class="center-content">
+                <button mat-flat-button color="primary" [disabled]="solicitudFormGroup.invalid"
+                    (click)="saveSolicitud()">Guardar</button>
+                <button mat-flat-button color="warn" routerLink="/solicitudes">Cancelar</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
